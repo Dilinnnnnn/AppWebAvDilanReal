@@ -1,0 +1,10 @@
+
+; Ejemplo de configuracion local de PoliMusic.
+; Copia este archivo como "config.local.ini" (en la misma carpeta
+; includes/) y pon tus credenciales reales de SQL Server.
+; Ese archivo esta en .gitignore: NUNCA se sube a GitHub.
+
+servidor=localhost
+base=BDD_PoliMusic
+usuario=PON_AQUI_TU_USUARIO_SQL
+clave=PON_AQUI_TU_CONTRASENA_SQL

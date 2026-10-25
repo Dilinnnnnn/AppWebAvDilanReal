@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" role="img" aria-label="Sin portada">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0E3B2A"/>
+      <stop offset="1" stop-color="#04120C"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="300" fill="url(#g)"/>
+  <g fill="none" stroke="#1FE08F" stroke-width="6" stroke-linecap="round" opacity="0.75">
+    <path d="M110 190V95l85-17v95"/>
+    <circle cx="98" cy="190" r="16"/>
+    <circle cx="183" cy="178" r="16"/>
+  </g>
+  <text x="150" y="262" font-family="Segoe UI, sans-serif" font-size="20" fill="#9DBFAE" text-anchor="middle">PoliMusic</text>
+</svg>

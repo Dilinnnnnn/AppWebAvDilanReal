@@ -1,0 +1,4 @@
+.workbuddy-ai/
+
+# Credenciales locales de SQL Server (nunca subir a GitHub)
+webapppolimusicv1_asp/includes/config.local.ini

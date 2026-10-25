@@ -1,0 +1,9 @@
+USE [master]
+GO
+IF DB_ID(N'BDD_PoliMusic') IS NOT NULL
+BEGIN
+    ALTER DATABASE [BDD_PoliMusic] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+    DROP DATABASE [BDD_PoliMusic];
+    PRINT 'BDD_PoliMusic dropped';
+END
+GO
