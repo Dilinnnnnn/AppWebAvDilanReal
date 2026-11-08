@@ -1,0 +1,552 @@
+/* ============================================
+   Song.aspx - SquareSpace Lexington inspired
+   Dilan Real - PoliMusic V3
+   ============================================ */
+
+:root {
+    --sq-bg: #FAF9F7;
+    --sq-bg-dark: #1A1A1A;
+    --sq-text: #1A1A1A;
+    --sq-text-light: #F5F5F3;
+    --sq-muted: #6B6B6B;
+    --sq-accent: #C4956C;
+    --sq-accent-dark: #A87A52;
+    --sq-border: #E8E6E1;
+    --sq-card-bg: #FFFFFF;
+    --sq-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    --sq-shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
+    --sq-radius: 2px;
+    --sq-transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* === Reset & Base === */
+.song-page {
+    background: var(--sq-bg);
+    min-height: 100vh;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: var(--sq-text);
+    -webkit-font-smoothing: antialiased;
+}
+
+.song-page * {
+    box-sizing: border-box;
+}
+
+/* === Hero Section === */
+.song-hero {
+    position: relative;
+    padding: 120px 0 80px 0;
+    text-align: center;
+    overflow: hidden;
+}
+
+.song-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #1A1A1A 0%, #2D2418 50%, #1A1A1A 100%);
+    z-index: -1;
+}
+
+.song-hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.song-hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--sq-accent);
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.song-hero-title {
+    font-size: 48px;
+    font-weight: 300;
+    letter-spacing: -1px;
+    color: var(--sq-text-light);
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.song-hero-subtitle {
+    font-size: 16px;
+    color: rgba(245,245,243,0.6);
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.song-hero-student {
+    margin-top: 30px;
+    display: inline-block;
+    padding: 8px 24px;
+    border: 1px solid rgba(196,149,108,0.4);
+    border-radius: 50px;
+    font-size: 13px;
+    color: var(--sq-accent);
+    letter-spacing: 1px;
+}
+
+/* === Student Badge (visible for screenshot) === */
+.song-student-badge {
+    position: fixed;
+    top: 80px;
+    right: 30px;
+    z-index: 999;
+    background: var(--sq-card-bg);
+    box-shadow: var(--sq-shadow);
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-size: 13px;
+    color: var(--sq-text);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.song-student-badge .dot {
+    width: 8px;
+    height: 8px;
+    background: var(--sq-accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+/* === Section Title === */
+.song-section {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.song-section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.song-section-eyebrow {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--sq-muted);
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.song-section-title {
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--sq-text);
+    letter-spacing: -0.5px;
+}
+
+/* === Song Grid === */
+.song-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.song-card {
+    background: var(--sq-card-bg);
+    border-radius: var(--sq-radius);
+    overflow: hidden;
+    box-shadow: var(--sq-shadow);
+    transition: var(--sq-transition);
+    border: 1px solid var(--sq-border);
+}
+
+.song-card:hover {
+    box-shadow: var(--sq-shadow-hover);
+    transform: translateY(-4px);
+}
+
+.song-card-cover {
+    position: relative;
+    height: 180px;
+    background: linear-gradient(135deg, var(--sq-accent) 0%, var(--sq-accent-dark) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.song-card-cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><g fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"><circle cx="30" cy="30" r="10"/><circle cx="30" cy="30" r="20"/><circle cx="30" cy="30" r="28"/></g></svg>');
+    background-size: cover;
+    opacity: 0.5;
+}
+
+.song-card-cover-icon {
+    position: relative;
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--sq-transition);
+}
+
+.song-card-cover-icon:hover {
+    background: rgba(255,255,255,0.25);
+    transform: scale(1.1);
+}
+
+.song-card-cover-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: white;
+    margin-left: 3px;
+}
+
+.song-card-cover.playing .song-card-cover-icon {
+    background: rgba(255,255,255,0.3);
+}
+
+.song-card-body {
+    padding: 24px;
+}
+
+.song-card-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--sq-text);
+    margin-bottom: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.song-card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.song-card-plays {
+    font-size: 12px;
+    color: var(--sq-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.song-card-id {
+    font-size: 11px;
+    color: var(--sq-muted);
+    opacity: 0.5;
+    letter-spacing: 1px;
+}
+
+/* === Audio Player Bar === */
+.song-player {
+    background: rgba(26,26,26,0.03);
+    border-radius: var(--sq-radius);
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.song-player-play {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: var(--sq-text);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--sq-transition);
+    padding: 0;
+}
+
+.song-player-play:hover {
+    background: var(--sq-accent);
+    transform: scale(1.05);
+}
+
+.song-player-play svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+}
+
+.song-player-play.playing svg {
+    margin-left: 0;
+}
+
+.song-player-progress {
+    flex-grow: 1;
+    height: 4px;
+    background: var(--sq-border);
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.song-player-progress-fill {
+    height: 100%;
+    background: var(--sq-accent);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+.song-player-time {
+    flex-shrink: 0;
+    font-size: 11px;
+    color: var(--sq-muted);
+    font-variant-numeric: tabular-nums;
+    min-width: 70px;
+    text-align: right;
+}
+
+/* === Table View (GridView styling) === */
+.song-table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 40px;
+    background: var(--sq-card-bg);
+    border-radius: var(--sq-radius);
+    box-shadow: var(--sq-shadow);
+    border: 1px solid var(--sq-border);
+}
+
+.song-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.song-table thead {
+    background: var(--sq-bg);
+}
+
+.song-table thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--sq-muted);
+    font-weight: 600;
+    border-bottom: 2px solid var(--sq-border);
+}
+
+.song-table thead th:first-child {
+    width: 50px;
+    text-align: center;
+}
+
+.song-table thead th:last-child {
+    width: 200px;
+}
+
+.song-table tbody tr {
+    border-bottom: 1px solid var(--sq-border);
+    transition: var(--sq-transition);
+}
+
+.song-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.song-table tbody tr:hover {
+    background: rgba(196,149,108,0.03);
+}
+
+.song-table tbody td {
+    padding: 16px 20px;
+    color: var(--sq-text);
+    vertical-align: middle;
+}
+
+.song-table tbody td:first-child {
+    text-align: center;
+    color: var(--sq-muted);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.song-table-song-name {
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.song-table-plays {
+    color: var(--sq-muted);
+    font-size: 13px;
+}
+
+.song-table-play-cell {
+    min-width: 200px;
+}
+
+/* Inline player in table */
+.song-inline-player {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.song-inline-player-btn {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: var(--sq-text);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--sq-transition);
+    padding: 0;
+}
+
+.song-inline-player-btn:hover {
+    background: var(--sq-accent);
+    transform: scale(1.05);
+}
+
+.song-inline-player-btn svg {
+    width: 12px;
+    height: 12px;
+    fill: currentColor;
+}
+
+.song-inline-player-btn.playing {
+    background: var(--sq-accent);
+}
+
+.song-inline-player-track {
+    flex-grow: 1;
+    height: 3px;
+    background: var(--sq-border);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.song-inline-player-fill {
+    height: 100%;
+    background: var(--sq-accent);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+.song-inline-player-time {
+    flex-shrink: 0;
+    font-size: 11px;
+    color: var(--sq-muted);
+    font-variant-numeric: tabular-nums;
+    min-width: 65px;
+    text-align: right;
+}
+
+/* === Footer Section === */
+.song-footer-section {
+    background: var(--sq-bg-dark);
+    padding: 60px 20px;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.song-footer-title {
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--sq-text-light);
+    margin-bottom: 12px;
+}
+
+.song-footer-text {
+    font-size: 14px;
+    color: rgba(245,245,243,0.5);
+    font-weight: 300;
+}
+
+.song-footer-credit {
+    margin-top: 24px;
+    font-size: 12px;
+    color: var(--sq-accent);
+    letter-spacing: 1px;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+    .song-hero-title {
+        font-size: 32px;
+    }
+
+    .song-section-title {
+        font-size: 26px;
+    }
+
+    .song-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .song-student-badge {
+        top: 70px;
+        right: 15px;
+        font-size: 11px;
+        padding: 8px 14px;
+    }
+
+    .song-table-play-cell {
+        min-width: 150px;
+    }
+
+    .song-section {
+        padding: 40px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .song-hero {
+        padding: 80px 0 50px 0;
+    }
+
+    .song-hero-title {
+        font-size: 26px;
+    }
+
+    .song-table thead th:last-child {
+        width: 140px;
+    }
+
+    .song-table tbody td {
+        padding: 12px 14px;
+    }
+}
